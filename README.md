@@ -1,4 +1,4 @@
-# DietaNeo Mobile — Migrating a Live App's Backend Without a Rewrite-and-Pray
+# Zymsia Mobile — Migrating a Live App's Backend Without a Rewrite-and-Pray
 
 A Flutter mobile app that shipped, gained real users, and then had its entire backend contract replaced underneath it — session-based chat endpoints swapped for a stateless, privacy-first API — without a big-bang rewrite.
 
