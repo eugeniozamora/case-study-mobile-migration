@@ -55,3 +55,7 @@ Most portfolios show a system built once. This shows the harder, more common rea
 ## What's in this repo vs. what's not
 
 This extract includes the before/after architecture and the migration process/metrics. It omits the production `lib/` source tree, real patient data, and legal/compliance docs — those stay in the private repo.
+
+Happy to walk through the migration in more depth on a technical call.
+
+**[Book a meeting](https://calendar.app.google/5FeUeC4X1VBYt2bU6)** · [eugeniozamora.com](https://eugeniozamora.com) · [LinkedIn](https://www.linkedin.com/in/eugeniozamora/) · [GitHub](https://github.com/eugeniozamora)
