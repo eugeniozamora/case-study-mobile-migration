@@ -4,7 +4,7 @@ A Flutter web app, delivered as a Progressive Web App (PWA) for mobile browsers,
 
 This repo is a sanitized case-study extract of the migration: the before/after architecture and the debt-reduction process, not the production source.
 
-**Role:** Product & Program Lead: product definition, architecture decisions, program governance and QA, with Claude Code as the execution team ([Idea to Launch method](https://github.com/eugeniozamora/idea-to-launch)).
+**Role:** Program Manager: product definition, architecture decisions, program governance and QA, with Claude Code as the execution team ([Idea to Launch method](https://github.com/eugeniozamora/idea-to-launch)).
 
 ## The problem
 
