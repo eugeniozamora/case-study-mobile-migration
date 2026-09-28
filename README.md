@@ -1,6 +1,6 @@
 # Zymsia Mobile — Migrating a Live App's Backend Without a Rewrite-and-Pray
 
-A Flutter mobile app that shipped, gained real users, and then had its entire backend contract replaced underneath it — session-based chat endpoints swapped for a stateless, privacy-first API — without a big-bang rewrite.
+A Flutter mobile app that shipped and then had its entire backend contract replaced underneath it — session-based chat endpoints swapped for a stateless, privacy-first API — without a big-bang rewrite.
 
 This repo is a sanitized case-study extract of the migration: the before/after architecture and the debt-reduction process, not the production source.
 
@@ -8,7 +8,7 @@ This repo is a sanitized case-study extract of the migration: the before/after a
 
 The original mobile client talked to a `/chat/*` + `/session/*` backend: server-held conversation sessions, client trusting server-side state to "remember" context. That backend was being replaced by a new stateless, ephemeral architecture (see the companion [ai-nutrition-coach](https://github.com/eugeniozamora/case-study-ai-nutrition-coach) case study) for privacy reasons — data retention had to move from "the server remembers" to "nothing is retained past a short session window."
 
-The mobile app couldn't be frozen while that happened. It had live users. The migration had to happen incrementally, behind a new client-side API layer, while the old code was identified, proven unused, and removed — not just left to rot alongside the new path.
+The mobile app was run as if it had live users: no feature freeze while that happened. The migration had to happen incrementally, behind a new client-side API layer, while the old code was identified, proven unused, and removed — not just left to rot alongside the new path.
 
 ## Before / after
 
@@ -32,7 +32,7 @@ flowchart LR
     Before -. "incremental migration,\nno feature freeze" .-> After
 ```
 
-**Key decision — introduce the new client layer before deleting the old one.** `ApiClientV3` and `MessageService` were built and shipped alongside the legacy `/chat` and `/session` calls, not as a replacement PR. Once the new path was live and verified in production, the legacy inventory was audited endpoint-by-endpoint before removal — so "is this actually unused?" was answered with evidence, not assumption.
+**Key decision — introduce the new client layer before deleting the old one.** `ApiClientV3` and `MessageService` were built and shipped alongside the legacy `/chat` and `/session` calls, not as a replacement PR. Once the new path was live and verified in the deployed environment, the legacy inventory was audited endpoint-by-endpoint before removal — so "is this actually unused?" was answered with evidence, not assumption.
 
 ## Migration results
 
@@ -50,7 +50,7 @@ flowchart LR
 
 ## Why this matters as a case study
 
-Most portfolios show a system built once. This shows the harder, more common reality of real engineering work: a live product whose foundation had to change under it, done with a paper trail (debt inventory, test coverage, incremental cutover) instead of a rewrite.
+Most portfolios show a system built once. This shows the harder, more common reality of real engineering work: a shipped product whose foundation had to change under it, done with a paper trail (debt inventory, test coverage, incremental cutover) instead of a rewrite.
 
 ## What's in this repo vs. what's not
 
