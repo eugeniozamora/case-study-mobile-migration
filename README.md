@@ -4,7 +4,7 @@ A Flutter mobile app that shipped and then had its entire backend contract repla
 
 This repo is a sanitized case-study extract of the migration: the before/after architecture and the debt-reduction process, not the production source.
 
-**Role:** Product & Delivery Lead: product definition, architecture decisions, delivery governance and QA, with Claude Code as the execution team ([PM-led, AI-executed delivery](https://github.com/eugeniozamora/pm-led-delivery)).
+**Role:** Product & Delivery Lead: product definition, architecture decisions, delivery governance and QA, with Claude Code as the execution team ([Idea to Launch method](https://github.com/eugeniozamora/idea-to-launch)).
 
 ## The problem
 
