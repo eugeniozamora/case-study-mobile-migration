@@ -1,8 +1,10 @@
-# Zymsia Mobile — Migrating a Live App's Backend Without a Rewrite-and-Pray
+# Zymsia Mobile — Migrating a Shipped App's Backend Without a Rewrite-and-Pray
 
 A Flutter mobile app that shipped and then had its entire backend contract replaced underneath it — session-based chat endpoints swapped for a stateless, privacy-first API — without a big-bang rewrite.
 
 This repo is a sanitized case-study extract of the migration: the before/after architecture and the debt-reduction process, not the production source.
+
+**Role:** Product & Delivery Lead: product definition, architecture decisions, delivery governance and QA, with Claude Code as the execution team ([PM-led, AI-executed delivery](https://github.com/eugeniozamora/pm-led-delivery)).
 
 ## The problem
 
@@ -54,7 +56,7 @@ Most portfolios show a system built once. This shows the harder, more common rea
 
 ## What's in this repo vs. what's not
 
-This extract includes the before/after architecture and the migration process/metrics. It omits the production `lib/` source tree, real patient data, and legal/compliance docs — those stay in the private repo.
+This extract includes the before/after architecture and the migration process/metrics. It omits the production `lib/` source tree, patient data, and legal/compliance docs — those stay in the private repo.
 
 Happy to walk through the migration in more depth on a technical call.
 
