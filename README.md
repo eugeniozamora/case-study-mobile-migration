@@ -1,6 +1,6 @@
 # Zymsia Mobile — Migrating a Shipped App's Backend Without a Rewrite-and-Pray
 
-A Flutter mobile app that shipped and then had its entire backend contract replaced underneath it — session-based chat endpoints swapped for a stateless, privacy-first API — without a big-bang rewrite.
+A Flutter web app, delivered as a Progressive Web App (PWA) for mobile browsers, that shipped and then had its entire backend contract replaced underneath it — session-based chat endpoints swapped for a stateless, privacy-first API — without a big-bang rewrite.
 
 This repo is a sanitized case-study extract of the migration: the before/after architecture and the debt-reduction process, not the production source.
 
@@ -10,21 +10,21 @@ This repo is a sanitized case-study extract of the migration: the before/after a
 
 The original mobile client talked to a `/chat/*` + `/session/*` backend: server-held conversation sessions, client trusting server-side state to "remember" context. That backend was being replaced by a new stateless, ephemeral architecture (see the companion [ai-nutrition-coach](https://github.com/eugeniozamora/case-study-ai-nutrition-coach) case study) for privacy reasons — data retention had to move from "the server remembers" to "nothing is retained past a short session window."
 
-The mobile app was run as if it had live users: no feature freeze while that happened. The migration had to happen incrementally, behind a new client-side API layer, while the old code was identified, proven unused, and removed — not just left to rot alongside the new path.
+The app was run as if it had live users: no feature freeze while that happened. The migration had to happen incrementally, behind a new client-side API layer, while the old code was identified, proven unused, and removed — not just left to rot alongside the new path.
 
 ## Before / after
 
 ```mermaid
 flowchart LR
     subgraph Before["Before — session-coupled"]
-        A1[Flutter App] --> A2["/chat/* endpoints"]
+        A1[Flutter PWA] --> A2["/chat/* endpoints"]
         A1 --> A3["/session/* endpoints"]
         A2 --> A4[(Server-held session state)]
         A3 --> A4
     end
 
     subgraph After["After — stateless client"]
-        B1[Flutter App] --> B2[ApiClientV3]
+        B1[Flutter PWA] --> B2[ApiClientV3]
         B2 --> B3[MessageService]
         B2 --> B4[SessionManager]
         B3 --> B5[(Ephemeral backend, TTL-based)]
@@ -46,7 +46,7 @@ flowchart LR
 
 | Layer | Choice | Why |
 |---|---|---|
-| Client | Flutter / Dart | single codebase, iOS + Android |
+| Client | Flutter Web / Dart, installable PWA | runs in the mobile browser, no app-store release |
 | Backend integration | Firebase Auth, REST | replaced session-coupled calls with a stateless client abstraction |
 | Testing | Flutter test suite (75+ tests) | migration safety net |
 
